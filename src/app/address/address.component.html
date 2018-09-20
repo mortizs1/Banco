@@ -1,0 +1,174 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+<!------ Include the above in your HEAD tag ---------->
+
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <img src="../img/logo.png">
+      <div class="help"></div>
+      <h1>Solicitud de grabación tarjetas de credito</h1>
+    </div>
+</nav>
+
+<br>
+
+<div class="container">
+        <form #formbanco="ngForm" class="well form-horizontal" (ngSubmit)="onSubmit(); formbanco.reset();">
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Tipo de tarjeta a solicitar *</label>
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                                <select class="form-control" required type="text" placeholder="Escoger una opción">
+                                    <option selected disabled hidden>Seleccione una opción</option>
+                                    <option *ngFor='let articulo of articulos'>{{articulo.id}} - {{articulo.title}}</option>
+                                </select>
+                            </div>
+                            <small class="form-text text-muted">Seleccione un tipo de tarjeta por favor</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Tipo de solicitud</label>
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                <select class="form-control" type="text" placeholder="Escoger una opción">
+                                    <option   selected disabled hidden>Seleccione una opción</option>
+                                    <option *ngFor='let articulo of articulos'>{{articulo.id}} - {{articulo.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Tipo de documento titular</label>
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group"><span class="input-group-addon"><i class="fas fa-fingerprint"></i></span>
+                                <input  placeholder="Tipo de documento titular" class="form-control" type="text" name="DocumentoTitular" #DocumentoTitular="ngModel" [(ngModel)]="address.DocumentoTitular" required>
+                                <span *ngIf="DocumentoTitular.touched && !DocumentoTitular.valid"><small class="form-text text-muted">Es necesario el Documento Titular.</small></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Nombre completo titular</label>
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group"><span class="input-group-addon"><i class="fas fa-user"></i></span>
+                                <input placeholder="Nombre completo titular" class="form-control" required type="text" name="NombreTitular" #NombreTitular="ngModel" [(ngModel)]="address.NombreTitular">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Nombre realce titular</label>
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group"><span class="input-group-addon"><i class="fas fa-credit-card"></i></span>
+                                <input placeholder="Nombre realce titular" class="form-control" required type="text" name="NombreRealce" #NombreRealce="ngModel" [(ngModel)]="address.NombreRealce"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Franquicia</label>
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                                <select class="form-control" required type="text" placeholder="Escoger una opción">
+                                    <option selected disabled hidden>Seleccione una opción</option>
+                                    <option *ngFor='let articulo of articulos'>{{articulo.id}} - {{articulo.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Tipo de tarjeta solicitada</label>
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                                <select class="form-control" required type="text" placeholder="Escoger una opción">
+                                    <option selected disabled hidden>Seleccione una opción</option>
+                                    <option *ngFor='let articulo of articulos'>{{articulo.id}} - {{articulo.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Exoneración</label>
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                <input placeholder="Exoneración" class="form-control" required type="text" name="Exoneracion" #Exoneracion="ngModel" [(ngModel)]="address.Exoneracion"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Cuota de manejo</label>
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group"><span class="input-group-addon"><i class="fas fa-dollar-sign"></i></span>
+                                <input placeholder="Cuota de manejo" class="form-control" required type="text" name="CuotaManejo" #CuotaManejo="ngModel" [(ngModel)]="address.CuotaManejo"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Ciclo</label>
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                                <select class="form-control" required type="text" placeholder="Escoger una opción">
+                                    <option selected disabled hidden>Seleccione una opción</option>
+                                    <option *ngFor='let articulo of articulos'>{{articulo.id}} - {{articulo.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Cupo</label>
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group"><span class="input-group-addon"><i class="fas fa-wallet"></i></span>
+                                <input placeholder="Cupo" class="form-control" required type="text" name="Cupo" #Cupo="ngModel" [(ngModel)]="address.Cupo"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Sucursal de radicación</label>
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                                <select class="form-control" required type="text" placeholder="Escoger una opción">
+                                    <option selected disabled hidden>Seleccione una opción</option>
+                                    <option *ngFor='let articulo of articulos'>{{articulo.id}} - {{articulo.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Código asesor</label>
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                <input placeholder="Código asesor" class="form-control" required type="text" name="CodigoAsesor" #CodigoAsesor="ngModel" [(ngModel)]="address.CodigoAsesor"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Código referido </label>
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                <input placeholder="Código referido" class="form-control" required type="text" name="CodigoReferido" #CodigoReferido="ngModel" [(ngModel)]="address.CodigoReferido"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Tipo pago débito atuomático</label>
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                                <select class="form-control" required type="text" placeholder="Escoger una opción">
+                                    <option selected disabled hidden>Seleccione una opción</option>
+                                    <option *ngFor='let articulo of articulos'>{{articulo.id}} - {{articulo.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <br>
+                <div class="row" id="botones">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-2">
+                            <button type="button" class="btn btn-7 btn-7a icon-truck" onclick="activate()">Primary</button>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2">
+                             <button class="Guardar" type="submit" [disabled]="!formbanco.form.valid">Guardar</button>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+        </form>
+        <br>
+    </div>
